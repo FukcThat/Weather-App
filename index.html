@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <form action="">
-      <input type="search" id="search-input" />
+    <form id="search-form" action="">
+      <input type="search" id="search-input" placeholder="Enter City..." />
     </form>
-    <div class="current-tab">
-      <p class="country-name"></p>
-      <p class="city-name"></p>
-      <p class="current-temp"></p>
-      <p class="feelslike-temp"></p>
+    <div id="current-tab">
+      <p id="country-name"></p>
+      <p id="city-name"></p>
+      <p id="current-temp"></p>
+      <p id="feelslike-temp"></p>
     </div>
   </body>
 </html>
