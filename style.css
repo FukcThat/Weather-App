@@ -1,8 +1,8 @@
 :root {
-    --bg-night: linear-gradient(#1E3F5D 0%, #072548 25%, #060325 100%);
+    --bg-dark: rgb(30, 28, 28);
 }
 
 body {
-    background: var(--bg-night);
+    background: var(--bg-dark);
     background-size:auto;
 }
