@@ -46,12 +46,15 @@ searchForm.addEventListener("submit", (event) => {
   searchInput.value = "";
 });
 
+// Current Weather
+
 const SetCurrentTemp = (data) => {
-  currentTemp.textContent = data.currentConditions.temp;
+  currentTemp.textContent = data.currentConditions.temp + "°";
 };
 
 const SetFeelLikeTemp = (data) => {
-  feelslikeTemp.textContent = data.currentConditions.feelslike;
+  feelslikeTemp.textContent =
+    "Feels like " + data.currentConditions.feelslike + "°";
 };
 
 const SetCountryName = (addressData) => {
@@ -63,3 +66,10 @@ const SetCityName = (addressData) => {
   let cityNameData = addressData[0];
   cityName.textContent = cityNameData;
 };
+
+// Today Weather Details
+
+// Sunrise Time
+// Wind Speed
+// Humidity
+// Sunset Time
