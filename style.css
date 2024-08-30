@@ -8,3 +8,11 @@ body {
     color: white;
 
 }
+
+.partly-cloudy-day {
+    height: 5rem;
+    width: 5rem;
+    background-position: center;
+    background-size: cover;
+    background-image: url('Icons/partly-cloudy-day.png');
+}

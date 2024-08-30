@@ -3,6 +3,8 @@ const searchForm = document.querySelector("#search-form");
 const countryName = document.querySelector("#country-name");
 const cityName = document.querySelector("#city-name");
 const currentTemp = document.querySelector("#current-temp");
+const currentIcon = document.querySelector("#current-icon");
+const currentCondition = document.querySelector("#current-condition");
 const feelslikeTemp = document.querySelector("#feelslike-temp");
 
 // Write function that hits Weather API
@@ -32,6 +34,8 @@ const UpdateInfo = (data) => {
   SetCountryName(addressData);
   SetCityName(addressData);
   SetCurrentTemp(data);
+  SetCurrentIcon(data);
+  SetCurrentCondition(data);
   SetFeelLikeTemp(data);
 
   console.log(data);
@@ -48,20 +52,36 @@ searchForm.addEventListener("submit", (event) => {
 
 // Current Weather
 
+// Current Temp
 const SetCurrentTemp = (data) => {
   currentTemp.textContent = data.currentConditions.temp + "°";
 };
 
+// Current Icon
+const SetCurrentIcon = (data) => {
+  currentIcon.classList.add(data.currentConditions.icon);
+};
+
+console.log(currentIcon.classList);
+
+// Condition Description
+const SetCurrentCondition = (data) => {
+  currentCondition.textContent = data.currentConditions.conditions;
+};
+
+// Feels like Temp
 const SetFeelLikeTemp = (data) => {
   feelslikeTemp.textContent =
     "Feels like " + data.currentConditions.feelslike + "°";
 };
 
+// Country
 const SetCountryName = (addressData) => {
   let countryNameData = addressData[addressData.length - 1];
   countryName.textContent = countryNameData;
 };
 
+// City
 const SetCityName = (addressData) => {
   let cityNameData = addressData[0];
   cityName.textContent = cityNameData;
