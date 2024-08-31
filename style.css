@@ -6,13 +6,87 @@ body {
     background: var(--bg-dark);
     background-size:auto;
     color: white;
+}
 
+.current-tab {
+    border: rgb(82, 77, 77) 1px solid;
+    display: flex;
+    flex-direction: column;
+}
+
+.temp-and-icon {
+    display: flex;
+    gap: 2rem;
+}
+
+/* Weather Cases - decending priority */
+
+.current-icon {
+    height: 5rem;
+    width: 5rem;
+    background-size: cover;
+}
+
+.snow {
+    background-image: url('Icons/partly-cloudy-day.png');
+}
+
+.snow-showers-day {
+    background-image: url('Icons/partly-cloudy-day.png');
+}
+
+.snow-showers-night {
+    background-image: url('Icons/partly-cloudy-day.png');
+}
+
+.thunder-rain {
+    background-image: url('Icons/partly-cloudy-day.png');
+}
+
+.thunder-showers-day {
+    background-image: url('Icons/partly-cloudy-day.png');
+}
+
+.thunder-showers-night {
+    background-image: url('Icons/partly-cloudy-day.png');
+}
+
+.rain {
+    background-image: url('Icons/partly-cloudy-day.png');
+}
+
+.showers-day {
+    background-image: url('Icons/partly-cloudy-day.png');
+}
+
+.showers-night {
+    background-image: url('Icons/partly-cloudy-day.png');
+}
+
+.fog {
+    background-image: url('Icons/partly-cloudy-day.png');
+}
+
+.wind {
+    background-image: url('Icons/partly-cloudy-day.png');
+}
+
+.cloudy {
+    background-image: url('Icons/partly-cloudy-day.png');
 }
 
 .partly-cloudy-day {
-    height: 5rem;
-    width: 5rem;
-    background-position: center;
-    background-size: cover;
+    background-image: url('Icons/partly-cloudy-day.png');
+}
+
+.partly-cloudy-night {
+    background-image: url('Icons/partly-cloudy-day.png');
+}
+
+.clear-day {
+    background-image: url('Icons/partly-cloudy-day.png');
+}
+
+.clear-night {
     background-image: url('Icons/partly-cloudy-day.png');
 }

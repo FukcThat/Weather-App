@@ -8,16 +8,24 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <form id="search-form" action="">
-      <input type="search" id="search-input" placeholder="Enter City..." />
+    <form class="search-form" action="">
+      <input type="search" class="search-input" placeholder="Enter City..." />
     </form>
-    <div id="current-tab">
-      <p id="country-name"></p>
-      <p id="city-name"></p>
-      <p id="current-temp"></p>
-      <p id="current-icon"></p>
-      <p id="current-condition"></p>
-      <p id="feelslike-temp"></p>
+    <div class="current-tab">
+      <p class="country-name"></p>
+      <p class="city-name"></p>
+      <div class="temp-and-icon">
+        <p class="current-temp"></p>
+        <p class="current-icon"></p>
+      </div>
+      <p class="current-condition"></p>
+      <p class="feelslike-temp"></p>
+    </div>
+    <div class="today-details">
+      <p class="sunrise-time"></p>
+      <p class="windspeed"></p>
+      <p class="humidity"></p>
+      <p class="sunset-time"></p>
     </div>
   </body>
 </html>

@@ -1,13 +1,20 @@
-const searchInput = document.querySelector("#search-input");
-const searchForm = document.querySelector("#search-form");
-const countryName = document.querySelector("#country-name");
-const cityName = document.querySelector("#city-name");
-const currentTemp = document.querySelector("#current-temp");
-const currentIcon = document.querySelector("#current-icon");
-const currentCondition = document.querySelector("#current-condition");
-const feelslikeTemp = document.querySelector("#feelslike-temp");
+// Search Bar
+const searchInput = document.querySelector(".search-input");
+const searchForm = document.querySelector(".search-form");
 
-// Write function that hits Weather API
+// Current Weather Tab
+const countryName = document.querySelector(".country-name");
+const cityName = document.querySelector(".city-name");
+const currentTemp = document.querySelector(".current-temp");
+const currentIcon = document.querySelector(".current-icon");
+const currentCondition = document.querySelector(".current-condition");
+const feelslikeTemp = document.querySelector(".feelslike-temp");
+
+// Today Details Tab
+const sunriseTime = document.querySelector(".sunrise-time");
+const windSpeed = document.querySelector(".windspeed");
+const humidity = document.querySelector(".humidity");
+const sunsetTime = document.querySelector(".sunset-time");
 
 // radio button
 // event listener on each input calls fetchWeatherData with correct metricInput
@@ -30,6 +37,7 @@ const FetchWeatherData = async (cityInput) => {
 };
 
 const UpdateInfo = (data) => {
+  // Current Tab
   let addressData = data.resolvedAddress.split(",");
   SetCountryName(addressData);
   SetCityName(addressData);
@@ -38,11 +46,20 @@ const UpdateInfo = (data) => {
   SetCurrentCondition(data);
   SetFeelLikeTemp(data);
 
+  // Today Details Tab
+  let sunriseData = data.currentConditions.sunrise.split(":");
+  let sunsetData = data.currentConditions.sunset.split(":");
+  SetSunriseTime(sunriseData);
+  SetSunsetTime(sunsetData);
+  SetWindspeed(data);
+  SetHumidity(data);
+
   console.log(data);
 };
 
 FetchWeatherData("Washington");
 
+// Event Listener - SearchBar
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   if (searchInput.value === "") window.alert("Please input a city name");
@@ -50,8 +67,7 @@ searchForm.addEventListener("submit", (event) => {
   searchInput.value = "";
 });
 
-// Current Weather
-
+// CURRENT WEATHER TAB
 // Current Temp
 const SetCurrentTemp = (data) => {
   currentTemp.textContent = data.currentConditions.temp + "°";
@@ -61,8 +77,6 @@ const SetCurrentTemp = (data) => {
 const SetCurrentIcon = (data) => {
   currentIcon.classList.add(data.currentConditions.icon);
 };
-
-console.log(currentIcon.classList);
 
 // Condition Description
 const SetCurrentCondition = (data) => {
@@ -90,6 +104,23 @@ const SetCityName = (addressData) => {
 // Today Weather Details
 
 // Sunrise Time
-// Wind Speed
-// Humidity
+const SetSunriseTime = (sunriseData) => {
+  let sunriseTimeData = sunriseData[0] + ":" + sunriseData[1];
+  sunriseTime.textContent = sunriseTimeData;
+};
+
 // Sunset Time
+const SetSunsetTime = (sunsetData) => {
+  let sunsetTimeData = sunsetData[0] + ":" + sunsetData[1];
+  sunsetTime.textContent = sunsetTimeData;
+};
+
+// Wind Speed
+const SetWindspeed = (data) => {
+  windSpeed.textContent = data.currentConditions.windspeed + "kph";
+};
+
+// Humidity
+const SetHumidity = (data) => {
+  humidity.textContent = data.currentConditions.humidity + "%";
+};
