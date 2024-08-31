@@ -19,6 +19,12 @@ body {
     gap: 2rem;
 }
 
+.today-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+}
+
 /* Weather Cases - decending priority */
 
 .current-icon {
