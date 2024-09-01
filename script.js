@@ -17,9 +17,8 @@ const humidity = document.querySelector(".humidity");
 const sunsetTime = document.querySelector(".sunset-time");
 const hourlyWeatherContainer = document.querySelector(".hourly-weather");
 
-// radio button
-// event listener on each input calls fetchWeatherData with correct metricInput
-// global lastCity var to keep in mind city for other updates
+// Future Forecast Tab
+const futureForecastDiv = document.querySelector(".future-forecast");
 
 const FetchWeatherData = async (cityInput) => {
   const WEATHER_URL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityInput}?unitGroup=metric&include=days%2Chours%2Ccurrent&key=9P7VWTLJFMKTKESF7QDVFUEH2&contentType=json`;
@@ -57,6 +56,9 @@ const UpdateInfo = (data) => {
 
   // Today Details Hourly
   SetHourlyWeather(data);
+
+  // Future Forecast
+  SetFutureForecast(data);
 
   console.log(data);
 };
@@ -152,9 +154,63 @@ const SetHourlyWeather = (data) => {
     tempTextElement.textContent = item.temp + "°";
     iconTextElement.classList.add("today-details-hourly-icon", item.icon);
 
+    // Append that sht
     hourInfoDiv.appendChild(hourTextElement);
     hourInfoDiv.appendChild(tempTextElement);
     hourInfoDiv.appendChild(iconTextElement);
     hourlyWeatherContainer.appendChild(hourInfoDiv);
   });
 };
+
+// FUTURE FORECAST
+
+const SetFutureForecast = (data) => {
+  let daysData = data.days;
+
+  daysData.forEach((item) => {
+    // Make day div
+    const dayDiv = document.createElement("div");
+
+    // Make Tags for Info Bits (DayName(?), DayDate, DayTemp, NightTemp, WeatherIcon, Description)
+    const dayDate = document.createElement("p");
+    const dayTempIcon = document.createElement("p");
+    const dayTemp = document.createElement("p");
+    const dayNightTemp = document.createElement("p");
+    const dayNightTempIcon = document.createElement("p");
+    const dayWeatherIcon = document.createElement("p");
+    const dayDescription = document.createElement("p");
+
+    // Set info for each Bit
+    dayDate.textContent = item.datetime;
+    dayTempIcon.classList.add("day-temp-icon");
+    dayTemp.textContent = item.temp;
+    dayNightTemp.textContent = item.tempmin;
+    dayNightTempIcon.classList.add("night-temp-icon");
+    dayWeatherIcon.classList.add(item.icon);
+    dayDescription.textContent = item.description;
+
+    // Append that sht
+    dayDiv.appendChild(dayDate);
+    dayDiv.appendChild(dayTempIcon);
+    dayDiv.appendChild(dayTemp);
+    dayDiv.appendChild(dayNightTemp);
+    dayDiv.appendChild(dayNightTempIcon);
+    dayDiv.appendChild(dayWeatherIcon);
+    dayDiv.appendChild(dayDescription);
+
+    futureForecastDiv.appendChild(dayDiv);
+  });
+};
+
+// DONE - get future forecast div
+// make 'one day' div for each day
+// inside one day div, make
+// xx Day Name & day Date
+// xx Average Day Temp + icon
+// xx Average Night Temp + icon
+// xx Average Weather Icon
+// xx Average description
+
+// radio button
+// event listener on each input calls fetchWeatherData with correct metricInput
+// global lastCity var to keep in mind city for other updates

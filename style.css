@@ -31,6 +31,12 @@ body {
     overflow-x: scroll;
 }
 
+.future-forecast {
+    display: flex;
+    gap: 2rem;
+    overflow-x: scroll;
+}
+
 /* Weather Cases - decending priority */
 
 .current-icon {
