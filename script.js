@@ -15,6 +15,7 @@ const sunriseTime = document.querySelector(".sunrise-time");
 const windSpeed = document.querySelector(".windspeed");
 const humidity = document.querySelector(".humidity");
 const sunsetTime = document.querySelector(".sunset-time");
+const hourlyWeatherContainer = document.querySelector(".hourly-weather");
 
 // radio button
 // event listener on each input calls fetchWeatherData with correct metricInput
@@ -53,6 +54,9 @@ const UpdateInfo = (data) => {
   SetSunsetTime(sunsetData);
   SetWindspeed(data);
   SetHumidity(data);
+
+  // Today Details Hourly
+  SetHourlyWeather(data);
 
   console.log(data);
 };
@@ -123,4 +127,34 @@ const SetWindspeed = (data) => {
 // Humidity
 const SetHumidity = (data) => {
   humidity.textContent = data.currentConditions.humidity + "%";
+};
+
+// Hourly Weather
+const SetHourlyWeather = (data) => {
+  let hoursData = data.days[0].hours;
+
+  hoursData.forEach((item) => {
+    // Show ever nth item
+    // if (index % 1 !== 0) return;
+
+    // Make Div
+    const hourInfoDiv = document.createElement("div");
+
+    // Make Tags for Info Bits (Hour, Temp, Icon)
+    const hourTextElement = document.createElement("p");
+    const tempTextElement = document.createElement("p");
+    const iconTextElement = document.createElement("p");
+
+    // Set info
+    let hourTimeData = item.datetime.split(":");
+
+    hourTextElement.textContent = hourTimeData[0] + ":" + hourTimeData[1];
+    tempTextElement.textContent = item.temp + "°";
+    iconTextElement.classList.add("today-details-hourly-icon", item.icon);
+
+    hourInfoDiv.appendChild(hourTextElement);
+    hourInfoDiv.appendChild(tempTextElement);
+    hourInfoDiv.appendChild(iconTextElement);
+    hourlyWeatherContainer.appendChild(hourInfoDiv);
+  });
 };

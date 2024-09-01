@@ -19,10 +19,16 @@ body {
     gap: 2rem;
 }
 
-.today-details {
+.today-details--info {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     place-items: center;
+}
+
+.hourly-weather {
+    display: flex;
+    gap: 2rem;
+    overflow-x: scroll;
 }
 
 /* Weather Cases - decending priority */
@@ -30,6 +36,12 @@ body {
 .current-icon {
     height: 5rem;
     width: 5rem;
+    background-size: cover;
+}
+
+.today-details-hourly-icon {
+    height: 3rem;
+    width: 3rem;
     background-size: cover;
 }
 
