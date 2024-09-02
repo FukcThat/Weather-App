@@ -181,10 +181,14 @@ const SetFutureForecast = (data) => {
     const dayDescription = document.createElement("p");
 
     // Set info for each Bit
-    dayDate.textContent = item.datetime;
+    let dayDateData = item.datetime.split("-");
+
+    console.log(dayDateData);
+
+    dayDate.textContent = dayDateData[2] + "." + dayDateData[1] + ".";
     dayTempIcon.classList.add("day-temp-icon");
-    dayTemp.textContent = item.temp;
-    dayNightTemp.textContent = item.tempmin;
+    dayTemp.textContent = item.temp + "°";
+    dayNightTemp.textContent = item.tempmin + "°";
     dayNightTempIcon.classList.add("night-temp-icon");
     dayWeatherIcon.classList.add(item.icon);
     dayDescription.textContent = item.description;
