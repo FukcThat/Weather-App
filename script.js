@@ -183,8 +183,6 @@ const SetFutureForecast = (data) => {
     // Set info for each Bit
     let dayDateData = item.datetime.split("-");
 
-    console.log(dayDateData);
-
     dayDate.textContent = dayDateData[2] + "." + dayDateData[1] + ".";
     dayTempIcon.classList.add("day-temp-icon");
     dayTemp.textContent = item.temp + "°";
@@ -205,15 +203,6 @@ const SetFutureForecast = (data) => {
     futureForecastDiv.appendChild(dayDiv);
   });
 };
-
-// DONE - get future forecast div
-// make 'one day' div for each day
-// inside one day div, make
-// xx Day Name & day Date
-// xx Average Day Temp + icon
-// xx Average Night Temp + icon
-// xx Average Weather Icon
-// xx Average description
 
 // radio button
 // event listener on each input calls fetchWeatherData with correct metricInput

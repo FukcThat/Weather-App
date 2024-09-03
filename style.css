@@ -1,24 +1,75 @@
 :root {
-    --bg-dark: rgb(30, 28, 28);
+    --something: black;
 }
+
+/* General  */
 
 body {
-    background: var(--bg-dark);
-    background-size:auto;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(rgb(57, 21, 40) 0%, rgb(110, 58, 71) 60%, rgb(196, 87, 87) 80%);
     color: white;
+    font-family: "Chakra Petch", sans-serif;
+    font-size: 1.25rem;
 }
 
+.page-wrapper {
+    height: 100dvh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.today-details {
+    padding-inline: 3rem;
+    padding-block: 1.5rem;
+    max-width: 50%;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 2rem;
+}
+
+/* Current Tab  */
 .current-tab {
-    border: rgb(82, 77, 77) 1px solid;
-    display: flex;
-    flex-direction: column;
+    padding-inline: 3rem;
+    padding-block: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 2rem;
+    display: grid;
+    grid-template-areas: 'country country' 'city city' 'temp icon' 'description description' 'feelsLike feelsLike';
 }
 
-.temp-and-icon {
-    display: flex;
-    gap: 2rem;
+.country-name {
+    grid-area: country;
+    margin-block: 0.5rem;
 }
 
+.city-name {
+    grid-area: city;
+    margin-block: 0;
+}
+
+.current-temp {
+    grid-area: temp;
+    margin-block: 2rem;
+}
+
+.current-icon {
+    grid-area: icon;
+    margin-block: 2rem;
+}
+
+.current-condition {
+    grid-area: description;
+    margin-block: 0.5rem;
+}
+
+.feelslike-temp {
+    grid-area: feelsLike;
+    margin-block: 0.5rem;
+}
+
+
+
+/* Today Details  */
 .today-details--info {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -31,6 +82,7 @@ body {
     overflow-x: scroll;
 }
 
+/* Future Forecast */
 .future-forecast {
     display: flex;
     gap: 2rem;
@@ -52,65 +104,154 @@ body {
 }
 
 .snow {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .snow-showers-day {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .snow-showers-night {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .thunder-rain {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .thunder-showers-day {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .thunder-showers-night {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .rain {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .showers-day {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .showers-night {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .fog {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .wind {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .cloudy {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .partly-cloudy-day {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .partly-cloudy-night {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .clear-day {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
 }
 
 .clear-night {
-    background-image: url('Icons/partly-cloudy-day.png');
+    background-image: url('Icons/cloudy-day.png');
+}
+
+/* Fonts  */
+
+/* Main Font */
+.chakra-petch-light {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .chakra-petch-regular {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .chakra-petch-medium {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .chakra-petch-semibold {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .chakra-petch-bold {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .chakra-petch-light-italic {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .chakra-petch-regular-italic {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .chakra-petch-medium-italic {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .chakra-petch-semibold-italic {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+  }
+  
+  .chakra-petch-bold-italic {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  
+  /* Sub Headers */
+
+.handjet {
+  font-family: "Handjet", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 2rem;
+}
+
+.handjet--current-temp {
+  font-family: "Handjet", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 5rem;
+}
+
+/* Headers */
+
+.pixelify-sans {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 3rem;
 }
