@@ -2,6 +2,11 @@
 const searchInput = document.querySelector(".search-input");
 const searchForm = document.querySelector(".search-form");
 
+// Unit Buttons
+
+const metricBtn = document.querySelector("#unit-metric");
+const imperialBtn = document.querySelector("#unit-imperial");
+
 // Current Weather Tab
 const countryName = document.querySelector(".country-name");
 const cityName = document.querySelector(".city-name");
@@ -20,8 +25,15 @@ const hourlyWeatherContainer = document.querySelector(".hourly-weather");
 // Future Forecast Tab
 const futureForecastDiv = document.querySelector(".future-forecast");
 
+// General Variables
+let isMetric = false;
+
+let lastSearchedCity = "Washington";
+
 const FetchWeatherData = async (cityInput) => {
-  const WEATHER_URL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityInput}?unitGroup=metric&include=days%2Chours%2Ccurrent&key=9P7VWTLJFMKTKESF7QDVFUEH2&contentType=json`;
+  const WEATHER_URL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityInput}?unitGroup=${
+    isMetric ? "metric" : "us"
+  }&include=days%2Chours%2Ccurrent&key=9P7VWTLJFMKTKESF7QDVFUEH2&contentType=json`;
 
   try {
     const response = await fetch(WEATHER_URL);
@@ -63,14 +75,29 @@ const UpdateInfo = (data) => {
   console.log(data);
 };
 
-FetchWeatherData("Washington");
+FetchWeatherData(lastSearchedCity);
 
-// Event Listener - SearchBar
+// Event Listener
+
+// SearchBar
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   if (searchInput.value === "") window.alert("Please input a city name");
-  FetchWeatherData(searchInput.value);
+  lastSearchedCity = searchInput.value;
+  FetchWeatherData(lastSearchedCity);
   searchInput.value = "";
+});
+
+// Metric Btn
+metricBtn.addEventListener("click", () => {
+  isMetric = true;
+  FetchWeatherData(lastSearchedCity);
+});
+
+// Imperial Btn
+imperialBtn.addEventListener("click", () => {
+  isMetric = false;
+  FetchWeatherData(lastSearchedCity);
 });
 
 // CURRENT WEATHER TAB
@@ -123,7 +150,9 @@ const SetSunsetTime = (sunsetData) => {
 
 // Wind Speed
 const SetWindspeed = (data) => {
-  windSpeed.textContent = data.currentConditions.windspeed + "kph";
+  windSpeed.textContent = `${data.currentConditions.windspeed} ${
+    isMetric ? "kph" : "mph"
+  }`;
 };
 
 // Humidity
@@ -135,6 +164,7 @@ const SetHumidity = (data) => {
 const SetHourlyWeather = (data) => {
   let hoursData = data.days[0].hours;
 
+  hourlyWeatherContainer.innerHTML = "";
   hoursData.forEach((item) => {
     // Show ever nth item
     // if (index % 1 !== 0) return;
@@ -166,6 +196,8 @@ const SetHourlyWeather = (data) => {
 
 const SetFutureForecast = (data) => {
   let daysData = data.days;
+
+  futureForecastDiv.innerHTML = "";
 
   daysData.forEach((item) => {
     // Make day div

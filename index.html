@@ -16,10 +16,27 @@
     />
   </head>
   <body>
+    <form class="search-form" action="">
+      <input type="search" class="search-input" placeholder="Enter City..." />
+      <label for="unit-metric" class="unit--metric">C / kph</label>
+      <input
+        id="unit-metric"
+        class="unit-toggle"
+        name="unit"
+        value="metric"
+        type="radio"
+        checked
+      />
+      <label for="unit-imperial" class="unit--imperial">F / mph</label>
+      <input
+        id="unit-imperial"
+        class="unit-toggle"
+        name="unit"
+        value="imperial"
+        type="radio"
+      />
+    </form>
     <div class="page-wrapper">
-      <form class="search-form" action="">
-        <input type="search" class="search-input" placeholder="Enter City..." />
-      </form>
       <div class="current-tab">
         <p class="country-name handjet"></p>
         <p class="city-name pixelify-sans"></p>
